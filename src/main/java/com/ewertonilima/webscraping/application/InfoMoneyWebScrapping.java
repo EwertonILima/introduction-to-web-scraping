@@ -13,6 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import com.ewertonilima.webscraping.entity.News;
+import com.ewertonilima.webscraping.util.Converter;
 
 public class InfoMoneyWebScrapping {
 
@@ -53,8 +54,10 @@ public class InfoMoneyWebScrapping {
 				list.add(new News(url, title, subtitle, author, date, text));
 			}
 			
-			System.out.println(list);
-			
+			//Convertendo para JSON para melhor visualização
+			for (News attributes : list) {
+				Converter.converterToJson(attributes);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
